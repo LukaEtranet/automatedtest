@@ -1,10 +1,11 @@
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import org.openqa.selenium.WebElement;
 import static org.apache.log4j.Level.INFO;
-
+import org.openqa.selenium.By;
 
 public class SelIntroduction {
 
@@ -44,7 +45,20 @@ public class SelIntroduction {
         LOGGER.log(INFO, "Naslov stranice: " + driver.getTitle());
         LOGGER.log(INFO, "URL: " + driver.getCurrentUrl());
 
+        // Locate the username and password fields and login button
+        WebElement body = driver.findElement(By.tagName("body"));
+        body.click();
 
+        WebElement usernameField = driver.findElement(By.id("username_only"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+
+        // Enter the username and password
+        usernameField.sendKeys("admin@etranet.hr");
+        passwordField.sendKeys("123");
+
+        // Click the login button
+
+        passwordField.sendKeys(Keys.RETURN);
 
     }
 }
